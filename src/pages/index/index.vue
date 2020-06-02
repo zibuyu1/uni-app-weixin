@@ -2,11 +2,12 @@
 	<view class="content">
 		<image v-if="shareImage" style="width: 250px; height: 200px;" :src="shareImage" />
 		<CanvasDrawer v-if="show" :painting="painting" @getImage="getImage" />
+		<button @click="paintImage">生成图片</button>
 	</view>
 </template>
 
 <script>
-import CanvasDrawer from '@/components/canvasdrawer/canvasdrawer';
+import CanvasDrawer from '@/components/canvasdrawer/canvasdrawer.vue';
 import shareMixin from '@/mixins/share';
 	export default {
 		data() {
@@ -20,6 +21,13 @@ import shareMixin from '@/mixins/share';
 		},
 		onLoad() {
 
+		},
+		onShareAppMessage(ops) {
+			return {
+				title: '这是我的名片，请惠存！',
+				path: '/pages/index/index', // 路径，传递参数到指定页面。
+				imageUrl: this.shareImage, // 分享的封面图
+			};
 		},
 		methods: {
 
