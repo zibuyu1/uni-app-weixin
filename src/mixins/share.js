@@ -25,7 +25,7 @@ export default {
 				views: [
 					{
             type: 'image',
-            url: 'share-personal.png',
+            url: 'https://upload-images.jianshu.io/upload_images/9500654-bb6bcbbd1af50142.png',
 						top: 0,
 						left: 0,
 						width: 250,
@@ -33,7 +33,7 @@ export default {
           },
           {
 						type: 'image',
-						url: 'img_touxiang.png',
+						url: 'https://wx.qlogo.cn/mmopen/vi_32/ibSugzjuOBicdqGBU0uSXDCkCqVEOFKYTNVs0A6Uq63wGtwF1zed63jGf2ickfKp6tt7icTVbF1A9WMZX9piciaB4yMw/132',
 						top: 20,
 						left: 200,
 						width: 30,
@@ -86,7 +86,7 @@ export default {
 			};
     },
     /** 图片绘制完成 */
-    getImage() {
+    getImage(event) {
       uni.hideLoading();
 			const { tempFilePath, errMsg } = event;
 			if (errMsg === 'canvasdrawer:ok') {

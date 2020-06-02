@@ -1,8 +1,9 @@
 <template>
 	<view class="content">
 		<image v-if="shareImage" style="width: 250px; height: 200px;" :src="shareImage" />
-		<CanvasDrawer v-if="show" :painting="painting" @getImage="getImage" />
+		<CanvasDrawer v-if="show" class="canvasdrawer" :painting="painting" @getImage="getImage" />
 		<button @click="paintImage">生成图片</button>
+		<button open-type="share">分享</button>
 	</view>
 </template>
 
