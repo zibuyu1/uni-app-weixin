@@ -10,30 +10,39 @@
 <script>
 import CanvasDrawer from '@/components/canvasdrawer/canvasdrawer.vue';
 import shareMixin from '@/mixins/share';
-	export default {
-		data() {
-			return {
-				show: true,
-			}
-		},
-		mixins: [shareMixin],
-		components: {
-			CanvasDrawer
-		},
-		onLoad() {
-
-		},
-		onShareAppMessage(ops) {
-			return {
-				title: '这是我的名片，请惠存！',
-				path: '/pages/index/index', // 路径，传递参数到指定页面。
-				imageUrl: this.shareImage, // 分享的封面图
-			};
-		},
-		methods: {
-
+const app = getApp();
+export default {
+	data() {
+		return {
+			show: true,
+		}
+	},
+	mixins: [shareMixin],
+	components: {
+		CanvasDrawer
+	},
+	onLoad() {
+		if (app.globalData.loginLoading) {
+      this.getUserLoginInfo();
+    } else {
+      app.globalData.callbackEvent = () => {
+        this.getUserLoginInfo();
+      }
+    }
+	},
+	onShareAppMessage(ops) {
+		return {
+			title: '这是我的名片，请惠存！',
+			path: '/pages/index/index', // 路径，传递参数到指定页面。
+			imageUrl: this.shareImage, // 分享的封面图
+		};
+	},
+	methods: {
+		getUserLoginInfo() {
+			// 这里调用接口
 		}
 	}
+}
 </script>
 
 <style>
